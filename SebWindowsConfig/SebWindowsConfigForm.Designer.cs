@@ -339,6 +339,7 @@ namespace SebWindowsConfig
 			this.groupBox11 = new System.Windows.Forms.GroupBox();
 			this.checkBoxAllowPrint = new System.Windows.Forms.CheckBox();
 			this.checkBoxAllowFind = new System.Windows.Forms.CheckBox();
+			this.checkBoxAllowThirdPartyCookies = new System.Windows.Forms.CheckBox();
 			this.checkBoxAllowPdfReaderToolbar = new System.Windows.Forms.CheckBox();
 			this.checkBoxAllowVideoCapture = new System.Windows.Forms.CheckBox();
 			this.checkBoxAllowAudioCapture = new System.Windows.Forms.CheckBox();
@@ -4411,6 +4412,7 @@ namespace SebWindowsConfig
 			// 
 			this.groupBox11.Controls.Add(this.checkBoxAllowPrint);
 			this.groupBox11.Controls.Add(this.checkBoxAllowFind);
+			this.groupBox11.Controls.Add(this.checkBoxAllowThirdPartyCookies);
 			this.groupBox11.Controls.Add(this.checkBoxAllowPdfReaderToolbar);
 			this.groupBox11.Controls.Add(this.checkBoxAllowVideoCapture);
 			this.groupBox11.Controls.Add(this.checkBoxAllowAudioCapture);
@@ -4449,6 +4451,18 @@ namespace SebWindowsConfig
 			this.checkBoxAllowFind.Text = "Allow text search";
 			this.checkBoxAllowFind.UseVisualStyleBackColor = true;
 			this.checkBoxAllowFind.CheckedChanged += new System.EventHandler(this.checkBoxAllowFind_CheckedChanged);
+			//
+			// checkBoxAllowThirdPartyCookies
+			//
+			this.checkBoxAllowThirdPartyCookies.AutoSize = true;
+			this.checkBoxAllowThirdPartyCookies.Location = new System.Drawing.Point(259, 24);
+			this.checkBoxAllowThirdPartyCookies.Name = "checkBoxAllowThirdPartyCookies";
+			this.checkBoxAllowThirdPartyCookies.Size = new System.Drawing.Size(228, 17);
+			this.checkBoxAllowThirdPartyCookies.TabIndex = 17;
+			this.checkBoxAllowThirdPartyCookies.Text = "Allow third-party cookies in iframes (Win)";
+			this.toolTip1.SetToolTip(this.checkBoxAllowThirdPartyCookies, "Sends unpartitioned third-party cookies with cross-site requests from within (nested) frames, e.g. for single sign-on.");
+			this.checkBoxAllowThirdPartyCookies.UseVisualStyleBackColor = true;
+			this.checkBoxAllowThirdPartyCookies.CheckedChanged += new System.EventHandler(this.checkBoxAllowThirdPartyCookies_CheckedChanged);
 			// 
 			// checkBoxAllowPdfReaderToolbar
 			// 
@@ -6862,6 +6876,7 @@ namespace SebWindowsConfig
 		private System.Windows.Forms.GroupBox groupBoxSebService;
 		private System.Windows.Forms.CheckBox checkBoxAllowCustomDownloadLocation;
 		private System.Windows.Forms.CheckBox checkBoxAllowFind;
+		private System.Windows.Forms.CheckBox checkBoxAllowThirdPartyCookies;
 		private System.Windows.Forms.GroupBox groupBox15;
 		private System.Windows.Forms.TextBox textBoxReconfigurationUrl;
 		private System.Windows.Forms.Label label21;

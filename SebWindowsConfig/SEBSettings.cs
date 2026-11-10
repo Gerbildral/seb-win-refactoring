@@ -177,6 +177,7 @@ namespace SebWindowsConfig
 		public const String KeyBrowserWindowTitleSuffix = "browserWindowTitleSuffix";
 		public const String KeyAllowPDFReaderToolbar = "allowPDFReaderToolbar";
 		public const String KeyAllowFind = "allowFind";
+		public const String KeyAllowThirdPartyCookies = "allowThirdPartyCookies";
 		public const String KeyAllowPrint = "allowPrint";
 
 		// Group "DownUploads"
@@ -716,6 +717,7 @@ namespace SebWindowsConfig
 			SEBSettings.settingsDefault.Add(SEBSettings.KeyBrowserWindowTitleSuffix, "");
 			SEBSettings.settingsDefault.Add(SEBSettings.KeyAllowPDFReaderToolbar, false);
 			SEBSettings.settingsDefault.Add(SEBSettings.KeyAllowFind, true);
+			SEBSettings.settingsDefault.Add(SEBSettings.KeyAllowThirdPartyCookies, false);
 			SEBSettings.settingsDefault.Add(SEBSettings.KeyAllowPrint, false);
 			// NewBrowserWindow Width and Height is stored additionally
 			SEBSettings.intArrayDefault[SEBSettings.ValNewBrowserWindowByLinkWidth] = 4;

@@ -48,6 +48,9 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 				case Keys.Browser.AllowSpellChecking:
 					MapAllowSpellChecking(settings, value);
 					break;
+				case Keys.Browser.AllowThirdPartyCookies:
+					MapAllowThirdPartyCookies(settings, value);
+					break;
 				case Keys.Browser.AllowUploads:
 					MapAllowUploads(settings, value);
 					break;
@@ -307,6 +310,14 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 			if (value is bool allow)
 			{
 				settings.Browser.AllowSpellChecking = allow;
+			}
+		}
+
+		private void MapAllowThirdPartyCookies(AppSettings settings, object value)
+		{
+			if (value is bool allow)
+			{
+				settings.Browser.AllowThirdPartyCookies = allow;
 			}
 		}
 

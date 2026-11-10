@@ -508,6 +508,7 @@ namespace SebWindowsConfig
 			checkBoxEnableZoomPage.CheckedChanged += checkBoxEnableZoomPage_CheckedChanged;
 			checkBoxAllowPdfReaderToolbar.Checked = (Boolean) SEBSettings.settingsCurrent[SEBSettings.KeyAllowPDFReaderToolbar];
 			checkBoxAllowFind.Checked = (Boolean) SEBSettings.settingsCurrent[SEBSettings.KeyAllowFind];
+			checkBoxAllowThirdPartyCookies.Checked = (Boolean) SEBSettings.settingsCurrent[SEBSettings.KeyAllowThirdPartyCookies];
 			checkBoxAllowPrint.Checked = (Boolean) SEBSettings.settingsCurrent[SEBSettings.KeyAllowPrint];
 
 			checkBoxAllowSpellCheck.Checked = (Boolean) SEBSettings.settingsCurrent[SEBSettings.KeyAllowSpellCheck];
@@ -4659,6 +4660,11 @@ namespace SebWindowsConfig
 		private void checkBoxAllowFind_CheckedChanged(object sender, EventArgs e)
 		{
 			SEBSettings.settingsCurrent[SEBSettings.KeyAllowFind] = checkBoxAllowFind.Checked;
+		}
+
+		private void checkBoxAllowThirdPartyCookies_CheckedChanged(object sender, EventArgs e)
+		{
+			SEBSettings.settingsCurrent[SEBSettings.KeyAllowThirdPartyCookies] = checkBoxAllowThirdPartyCookies.Checked;
 		}
 
 		private void checkBoxAllowReconfiguration_CheckedChanged(object sender, EventArgs e)

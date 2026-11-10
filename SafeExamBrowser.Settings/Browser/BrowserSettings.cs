@@ -67,6 +67,11 @@ namespace SafeExamBrowser.Settings.Browser
 		public bool AllowSpellChecking { get; set; }
 
 		/// <summary>
+		/// Determines whether unpartitioned third-party cookies are allowed, i.e. sent with cross-site requests from within (nested) frames.
+		/// </summary>
+		public bool AllowThirdPartyCookies { get; set; }
+
+		/// <summary>
 		/// Determines whether the user will be allowed to upload files.
 		/// </summary>
 		public bool AllowUploads { get; set; }

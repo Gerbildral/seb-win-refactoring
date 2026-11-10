@@ -51,6 +51,7 @@ namespace SafeExamBrowser.Configuration.ConfigurationData
 			internal const string AllowPdfReaderToolbar = "allowPDFReaderToolbar";
 			internal const string AllowPrint = "allowPrint";
 			internal const string AllowSpellChecking = "allowSpellCheck";
+			internal const string AllowThirdPartyCookies = "allowThirdPartyCookies";
 			internal const string AllowUploads = "allowUploads";
 			internal const string CustomUserAgentDesktop = "browserUserAgentWinDesktopModeCustom";
 			internal const string CustomUserAgentMobile = "browserUserAgentWinTouchModeCustom";

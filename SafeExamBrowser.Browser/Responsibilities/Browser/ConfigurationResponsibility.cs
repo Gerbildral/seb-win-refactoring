@@ -81,6 +81,11 @@ namespace SafeExamBrowser.Browser.Responsibilities.Browser
 				settings.CefCommandLineArgs.Add("disable-spell-checking");
 			}
 
+			if (Settings.AllowThirdPartyCookies)
+			{
+				InitializeThirdPartyCookieFeatures(settings);
+			}
+
 			InitializeProxySettings(settings);
 
 			Logger.Debug($"Accept Language: {settings.AcceptLanguageList}");
@@ -90,20 +95,60 @@ namespace SafeExamBrowser.Browser.Responsibilities.Browser
 			Logger.Debug($"Log Severity: {settings.LogSeverity}.");
 			Logger.Debug($"PDF Reader: {(Settings.AllowPdfReader ? "Enabled" : "Disabled")}.");
 			Logger.Debug($"Session Persistence: {(settings.PersistSessionCookies ? "Enabled" : "Disabled")}.");
+			Logger.Debug($"Third-Party Cookies: {(Settings.AllowThirdPartyCookies ? "Allowed" : "Default")}.");
 
 			return settings;
 		}
 
 		private void InitializePreferences()
 		{
+			var allowThirdPartyCookies = Settings.AllowThirdPartyCookies;
+
 			Cef.UIThreadTaskFactory.StartNew(() =>
 			{
 				using (var requestContext = Cef.GetGlobalRequestContext())
 				{
 					requestContext.SetPreference("autofill.credit_card_enabled", false, out _);
 					requestContext.SetPreference("autofill.profile_enabled", false, out _);
+
+					if (allowThirdPartyCookies)
+					{
+						SetPreference(requestContext, "profile.cookie_controls_mode", 0);
+						SetPreference(requestContext, "profile.block_third_party_cookies", false);
+					}
 				}
 			});
+		}
+
+		private void InitializeThirdPartyCookieFeatures(CefSettings settings)
+		{
+			const string DISABLE_FEATURES = "disable-features";
+			const string FEATURES = "ThirdPartyStoragePartitioning,TrackingProtection3pcd,ForceThirdPartyCookieBlocking";
+
+			if (settings.CefCommandLineArgs.TryGetValue(DISABLE_FEATURES, out var existing) && !string.IsNullOrWhiteSpace(existing))
+			{
+				settings.CefCommandLineArgs[DISABLE_FEATURES] = $"{existing},{FEATURES}";
+			}
+			else
+			{
+				settings.CefCommandLineArgs[DISABLE_FEATURES] = FEATURES;
+			}
+
+			Logger.Debug($"Disabled Features: {settings.CefCommandLineArgs[DISABLE_FEATURES]}");
+		}
+
+		private void SetPreference(IRequestContext requestContext, string name, object value)
+		{
+			var success = requestContext.SetPreference(name, value, out var error);
+
+			if (success)
+			{
+				Logger.Debug($"Successfully set preference '{name}' to '{value}'.");
+			}
+			else
+			{
+				Logger.Warn($"Failed to set preference '{name}' to '{value}': {error}");
+			}
 		}
 
 		private void InitializeProxySettings(CefSettings settings)
